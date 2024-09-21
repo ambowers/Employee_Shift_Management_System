@@ -34,6 +34,7 @@ employee.shifts.push ({day, hours});
 }
 //testing the function
  assignShift('Lina', 'Thursday', 3);
+ assignShift('Emily','Monday', 3)
 
 // Task 4 create a function to calculate total hours worked
 function calculateTotalHours (){
@@ -45,3 +46,20 @@ function calculateTotalHours (){
     });
 }
 calculateTotalHours ();
+
+// Task 5 create a function to list employees with free days
+
+function listAvailableEmployees (day) {
+    console.log (`Employees not assigned shift on ${day}:`)
+    employees.forEach( employee => {
+        let hasShift = false
+        employee.shifts.forEach(shift => {
+            if (shift.day === day)  {
+                hasShift = true;}
+        })
+    if (hasShift === false) {
+        console.log(employee.name);
+    }});
+}
+//testing function
+listAvailableEmployees('Friday')
