@@ -3,7 +3,7 @@
 const employees = [
     {name:'Lina', shifts:[{day: 'Monday',hours: 1},{day: 'Tuesday',hours: 3},{day: 'Wednesday',hours: 1}] },
     {name:'Emily', shifts:[{day: 'Monday',hours: 4},{day: 'Wednesday',hours: 2},{day: 'Friday',hours: 1}]},
-    {name:'Emma', shifts:[,{day: 'Tuesday',hours: 4},{day: 'Wednesday',hours: 1},{day: 'Thursday',hours: 3}]},
+    {name:'Emma', shifts:[{day: 'Tuesday',hours: 4},{day: 'Wednesday',hours: 1},{day: 'Thursday',hours: 3}]},
     {name:'Cheyenne', shifts:[{day: 'Monday',hours: 5},{day: 'Tuesday',hours: 4}]}
 ];
 
@@ -30,8 +30,18 @@ function assignShift (employeeName, day, hours) {
         return;
       }
 employee.shifts.push ({day, hours});
-      console.log (`Shift successfully added for ${employeeName} on ${day} and will work ${hours} hours.`);
+    console.log (`Shift successfully added for ${employeeName} to work ${hours} on ${day}.`);
 }
 //testing the function
  assignShift('Lina', 'Thursday', 3);
- 
+
+// Task 4 create a function to calculate total hours worked
+function calculateTotalHours (){
+    employees.forEach(employee => {
+        const totalHours = employee.shifts.reduce ((total, shift) => {
+            return total + shift.hours;
+        },0)
+        console.log(`${employee.name} has worked ${totalHours} hours this week.`)
+    });
+}
+calculateTotalHours ();
